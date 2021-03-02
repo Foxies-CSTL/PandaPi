@@ -556,6 +556,7 @@
   #include "stm32f1/pins_MINGDA_MPX_ARM_MINI.h" // STM32F1                                env:STM32F103RE
 #elif MB(PANDAPI_STM32_V28)
   #include "stm32f1/pins_PANDAPI_STM32_V28.h"   // STM32F1                                env:pandapi_stm32
+
 //
 // ARM Cortex-M4F
 //
