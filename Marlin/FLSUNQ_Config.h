@@ -27,10 +27,12 @@
 
 //==============PANDAPI===================env:stm32f103
 #define FamPDPI  //
+
 #ifdef FamPDPI
     #define PANDA_PI                     // envs = mega2560
-    //#define STOCK
-    #define Q_UARTH
+    #define STOCK
+    //#define QQSP
+    //#define Q_UARTH
     //#define MONITOR_DRIVER_STATUS
     //#define TMC_HARDWARE_SERIAL
 
@@ -63,9 +65,9 @@
     #define FILAMENT_RUNOUT_SENSOR     // NC LVGL
     #define ADVANCED_PAUSE_FEATURE     // NC LVGL
     //#define LCD_SET_PROGRESS_MANUALLY
-    #define TCHM
+    //#define TCHM
     //----2209--
-    #define StallGuard
+    //#define StallGuard
     //#define XYZ_CURRENT_HOME 900
     //#define TMC_HOME_PHASE { -1, -1, -1 }//-1 for Homing phase
     //#define StallGuard2

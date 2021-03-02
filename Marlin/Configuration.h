@@ -21,7 +21,7 @@
  */
 #pragma once
 
-#define CONFIG_EXAMPLES_DIR "delta/FLSUN/QQS-Pro"
+//#define CONFIG_EXAMPLES_DIR "delta/FLSUN/QQS-Pro"
 
 /**
  * Configuration.h
@@ -1283,30 +1283,30 @@
   // if servo actuated touch probe is not defined. Uncomment as appropriate for your printer/probe.
 
   #define Z_PROBE_ALLEN_KEY_DEPLOY_1 { 30.0, DELTA_PRINTABLE_RADIUS, 100.0 }
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_1_FEEDRATE XY_PROBE_SPEED
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_1_FEEDRATE XY_PROBE_FEEDRATE
 
   #define Z_PROBE_ALLEN_KEY_DEPLOY_2 { 0.0, DELTA_PRINTABLE_RADIUS, 100.0 }
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_2_FEEDRATE (XY_PROBE_SPEED)/10
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_2_FEEDRATE (XY_PROBE_FEEDRATE)/10
 
   #define Z_PROBE_ALLEN_KEY_DEPLOY_3 { 0.0, (DELTA_PRINTABLE_RADIUS) * 0.75, 100.0 }
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_3_FEEDRATE XY_PROBE_SPEED
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_3_FEEDRATE XY_PROBE_FEEDRATE
 
   #define Z_PROBE_ALLEN_KEY_STOW_DEPTH 30
   #define Z_PROBE_ALLEN_KEY_STOW_1 { -64.0, 56.0, 23.0 } // Move the probe into position
-  #define Z_PROBE_ALLEN_KEY_STOW_1_FEEDRATE XY_PROBE_SPEED
+  #define Z_PROBE_ALLEN_KEY_STOW_1_FEEDRATE XY_PROBE_FEEDRATE
   // Move the nozzle down further to push the probe into retracted position.
   //#define Z_PROBE_ALLEN_KEY_STOW_2 { -64.0, 56.0, 3.0 } // Push it down
   #define Z_PROBE_ALLEN_KEY_STOW_2 { -64.0, 56.0, 23.0-(Z_PROBE_ALLEN_KEY_STOW_DEPTH) }
-  #define Z_PROBE_ALLEN_KEY_STOW_2_FEEDRATE (XY_PROBE_SPEED)/10
+  #define Z_PROBE_ALLEN_KEY_STOW_2_FEEDRATE (XY_PROBE_FEEDRATE)/10
   // Raise things back up slightly so we don't bump into anything
   #define Z_PROBE_ALLEN_KEY_STOW_3 { -64.0, 56.0, 23.0+(Z_PROBE_ALLEN_KEY_STOW_DEPTH) }
-  #define Z_PROBE_ALLEN_KEY_STOW_3_FEEDRATE (XY_PROBE_SPEED)/2
+  #define Z_PROBE_ALLEN_KEY_STOW_3_FEEDRATE (XY_PROBE_FEEDRATE)/2
   //#define Z_PROBE_ALLEN_KEY_STOW_3 { -64.0, 56.0, 50.0 } // Move it up to clear
-  //#define Z_PROBE_ALLEN_KEY_STOW_3_FEEDRATE XY_PROBE_SPEED
+  //#define Z_PROBE_ALLEN_KEY_STOW_3_FEEDRATE XY_PROBE_FEEDRATE
 
   #define Z_PROBE_ALLEN_KEY_STOW_4 { 0.0, 0.0, 23.0+(Z_PROBE_ALLEN_KEY_STOW_DEPTH) }
   //#define Z_PROBE_ALLEN_KEY_STOW_4 { 0.0, 0.0, 50.0 }
-  #define Z_PROBE_ALLEN_KEY_STOW_4_FEEDRATE XY_PROBE_SPEED
+  #define Z_PROBE_ALLEN_KEY_STOW_4_FEEDRATE XY_PROBE_FEEDRATE
 
 #endif // Z_PROBE_ALLEN_KEY
 
@@ -1369,30 +1369,30 @@
 #endif
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (66*60)   //3960
-//#define XY_PROBE_SPEED (100*60)   // 6000  K
-//#define XY_PROBE_SPEED (16*60)    // 960KLP
-//#define XY_PROBE_SPEED (50*60)    // 3000P
-//#define XY_PROBE_SPEED (133*60)   // 7980 K+
-//#define XY_PROBE_SPEED (83*60)    // 4980 DeltaBot
+#define XY_PROBE_FEEDRATE (66*60)   //3960
+//#define XY_PROBE_FEEDRATE (100*60)   // 6000  K
+//#define XY_PROBE_FEEDRATE (16*60)    // 960KLP
+//#define XY_PROBE_FEEDRATE (50*60)    // 3000P
+//#define XY_PROBE_FEEDRATE (133*60)   // 7980 K+
+//#define XY_PROBE_FEEDRATE (83*60)    // 4980 DeltaBot
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-//#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z  //PREDATOR (50*60) KLP (30*60) K(100*60)
-//#define Z_PROBE_SPEED_FAST homing_feedrate_mm_m.z
+//#define Z_PROBE_FEEDRATE_FAST HOMING_FEEDRATE_Z  //PREDATOR (50*60) KLP (30*60) K(100*60)
+//#define Z_PROBE_FEEDRATE_FAST homing_feedrate_mm_m.z
 #ifdef XP
-  #define Z_PROBE_SPEED_FAST (40*60)  //3000
+  #define Z_PROBE_FEEDRATE_FAST (40*60)  //3000
 #else
-  #define Z_PROBE_SPEED_FAST (40*60)  //1800
+  #define Z_PROBE_FEEDRATE_FAST (40*60)  //1800
 #endif
-//#define Z_PROBE_SPEED_FAST (100*60)  //6000 => /3 K
-//#define Z_PROBE_SPEED_FAST (50*60)   //3000 => /3 P
-//#define Z_PROBE_SPEED_FAST (30*60)   //1800 => /3 KLP
-//#define Z_PROBE_SPEED_FAST (200*60)  //12000 => /2 K+
+//#define Z_PROBE_FEEDRATE_FAST (100*60)  //6000 => /3 K
+//#define Z_PROBE_FEEDRATE_FAST (50*60)   //3000 => /3 P
+//#define Z_PROBE_FEEDRATE_FAST (30*60)   //1800 => /3 KLP
+//#define Z_PROBE_FEEDRATE_FAST (200*60)  //12000 => /2 K+
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-//#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)  //600
-#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 4) //450 or 750
-//#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 3) //1000
+//#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)  //600
+#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 4) //450 or 750
+//#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 3) //1000
 
 /**
  * Probe Activation Switch
@@ -1990,7 +1990,7 @@
 #endif
 
 // Delta only homes to Z
-//#define Z_PROBE_SPEED_FAST homing_feedrate_mm_m.z
+//#define Z_PROBE_FEEDRATE_FAST homing_feedrate_mm_m.z
 //#define HOMING_FEEDRATE_Z  (100*60) //(50*60)
 //#define HOMING_FEEDRATE_MM_M { (100*60), (100*60), (100*60) }
 
