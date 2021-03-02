@@ -1525,7 +1525,7 @@
 // Additional options for DGUS / DWIN displays
 //
 #if HAS_DGUS_LCD
-  #define LCD_SERIAL_PORT 0 //3 PANDAPI
+  #define LCD_SERIAL_PORT 0 //3 PANDA_PI
   #define LCD_BAUDRATE 115200
 
   #define DGUS_RX_BUFFER_SIZE 128
@@ -2074,9 +2074,9 @@
  * Currently handles M108, M112, M410, M876
  * NOTE: Not yet implemented for all platforms.
  */
-#ifndef PANDAPI
+//#ifndef PANDA_PI
   #define EMERGENCY_PARSER
-#endif
+//#endif
 
 // Bad Serial-connections can miss a received command by sending an 'ok'
 // Therefore some clients abort after 30 seconds in a timeout.
@@ -2609,7 +2609,7 @@
     #define E0_SLAVE_ADDRESS 0
     #define E1_SLAVE_ADDRESS 0
   #endif
-  #ifdef PANDAPI
+  #ifdef PANDA_PI
     #define  X_SLAVE_ADDRESS 0
     #define  Y_SLAVE_ADDRESS 1
     #define  Z_SLAVE_ADDRESS 2

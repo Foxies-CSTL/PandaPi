@@ -28,20 +28,22 @@
 //==============PANDAPI===================env:stm32f103
 #define FamPDPI  //
 #ifdef FamPDPI
-    #define PANDAPI                     // envs = mega2560
-    #define Q_UART9
+    #define PANDA_PI                     // envs = mega2560
+    //#define STOCK
+    #define Q_UARTH
+    //#define MONITOR_DRIVER_STATUS
+    //#define TMC_HARDWARE_SERIAL
+
     //--------Spec---------------------//
-    #define PANDAPI  1    // PandaPi shield for raspberry Pi printer
-    #define CPU_32_BIT
-    #define MOTOR_SPEED_CALIBRATE 
-    #define DGUS_LCD_UI_PANDAPI
-    #define DGUS_LCD_UI_ORIGIN
-    #define ULTRA_LCD
-    #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+    //#define PANDAPI  1    // PandaPi shield for raspberry Pi printer
+    //#define CPU_32_BIT
+    //#define MOTOR_SPEED_CALIBRATE 
+    //#define DGUS_LCD_UI_PANDAPI
+    //#define DGUS_LCD_UI_ORIGIN
+    //#define ULTRA_LCD
+    //#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
     //---adv----//
     #define SLOWDOWN
-    
-    #define MONITOR_DRIVER_STATUS
     //---------------------------------------------//
     //#define ALL_TMC8                   //(8) For 4xTMC220x_STANDALONE
     //#define Q_UART8                    //(U8/U9) 4xTMC2208
@@ -61,8 +63,9 @@
     #define FILAMENT_RUNOUT_SENSOR     // NC LVGL
     #define ADVANCED_PAUSE_FEATURE     // NC LVGL
     //#define LCD_SET_PROGRESS_MANUALLY
+    #define TCHM
     //----2209--
-    //#define StallGuard
+    #define StallGuard
     //#define XYZ_CURRENT_HOME 900
     //#define TMC_HOME_PHASE { -1, -1, -1 }//-1 for Homing phase
     //#define StallGuard2

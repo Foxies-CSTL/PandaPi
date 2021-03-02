@@ -115,16 +115,15 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#ifdef PANDAPI
-  #define SERIAL_PORT 0
-  #define SERIAL_PORT_2 1
+#ifdef PANDA_PI
+  #define SERIAL_PORT 3
+  #define SERIAL_PORT_2 -1
 #endif
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#endif
 #if ANY(QQSP, Q5)
   #define SERIAL_PORT 3
   #define SERIAL_PORT_2 1
@@ -143,7 +142,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#ifdef PANDAPI
+#ifdef PANDA_PI
   #define BAUDRATE 250000
   #define BAUDRATE_TNT   115200 //octo
 #else
@@ -161,8 +160,8 @@
   #if ANY(Q5,NANO)
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
   #endif
-  #ifdef PANDAPI
-  #define MOTHERBOARD BOARD_PANDAPI_V28
+  #ifdef PANDA_PI
+  #define MOTHERBOARD BOARD_PANDAPI_STM32_V28
   #endif
 #endif
 
@@ -964,7 +963,7 @@
  *
  * :[2,3,4,5,6,7]
  */
-#ifdef PANDAPI
+#ifdef PANDA_PI
   #define ENDSTOP_NOISE_THRESHOLD 2
 #endif
 
@@ -1142,7 +1141,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#if ANY(QQSP, Q5, PANDAPI)
+#if ANY(QQSP, Q5, PANDA_PI)
   #ifdef StallGuard2
     #undef Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN //SKR11
   #else  
@@ -1520,14 +1519,14 @@
 // @section extruder
 
 #define DISABLE_E false             // Disable the extruder when not stepping
-#ifndef PANDAPI
+#ifndef PANDA_PI
   #define DISABLE_INACTIVE_EXTRUDER   // Keep only the active extruder enabled
 #endif
 
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#if ANY(STOCK, PANDAPI)
+#if ANY(STOCK, PANDA_PI)
   #define INVERT_X_DIR false  //Q5_220X
   #define INVERT_Y_DIR false  //Q5_220X
   #define INVERT_Z_DIR false  //Q5_220X
@@ -2525,7 +2524,7 @@
 //
 // Generic 16x2, 16x4, 20x2, or 20x4 character-based LCD.
 //
-//#define ULTRA_LCD //PANDAPI
+//#define ULTRA_LCD //PANDA_PI
 
 //=============================================================================
 //======================== LCD / Controller Selection =========================
@@ -2801,7 +2800,7 @@
 //#define DGUS_LCD_UI_ORIGIN
 //#define DGUS_LCD_UI_FYSETC
 //#define DGUS_LCD_UI_HIPRECY
-//#define DGUS_LCD_UI_PANDAPI
+//#define DGUS_LCD_UI_PANDAPI //PANDA_PI
 
 //
 // Touch-screen LCD for Malyan M200/M300 printers
