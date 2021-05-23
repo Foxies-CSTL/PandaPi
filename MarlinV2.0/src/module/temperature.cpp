@@ -1249,17 +1249,18 @@ void Temperature::manage_heater() {
 		{
 			fanSpeeds_old[0]=fan_speed[0];
 			set_fan_speed(0,fan_speed[0]);
-		}
+		}		
 		// set board Fan
 		//if(digitalRead(X_ENABLE_PIN)==0)
 		if(fanSpeeds_old[2]!=digitalRead(X_ENABLE_PIN))
 		{
 		  //  printf("fan:%d,%d\n",fanSpeeds_old[2],digitalRead(X_ENABLE_PIN));
 			fanSpeeds_old[2]=digitalRead(X_ENABLE_PIN);
-			set_fan_speed(2,(!fanSpeeds_old[2])*255);
+			set_fan_speed(2,180+(!fanSpeeds_old[2])*75);
 			
 		}
-	  
+
+
   }
   if((time_s-time_1ms)>=1)
   {
@@ -1866,6 +1867,10 @@ void init_PT100_max31865(void);
 void Temperature::init() {
 ////////////PANDAPI
 	i2c_fd=-1;
+	system("gpio -g mode 2 alt0");
+	system("gpio -g mode 3 alt0");
+	system("sudo service klipper stop");
+
 	i2c_fd = wiringPiI2CSetup(0x3c);
 	//////////reboot the MCU
 	wiringPiI2CWriteReg8(i2c_fd, 8, 'r');
@@ -2851,7 +2856,7 @@ void Temperature::get_from_mcu()
 	  //////////////////////////////////   
 	  if(ret==1)
 	  {
-		  printf("%s  |   \n",cmd_buf);
+		 // printf("%s  |   \n",cmd_buf);
 		  memset(cmd_buf,0,sizeof(cmd_buf));
 		  wiringPiI2CWriteReg8(i2c_fd, 8, 'g');
 		  wiringPiI2CWriteReg8(i2c_fd, 8, ';');
@@ -2871,7 +2876,7 @@ void Temperature::get_from_mcu()
 				  break;
 			  }
 		  }
-		  printf("%s  +   \n",cmd_buf);
+		 // printf("%s  +   \n",cmd_buf);
 			if(parse_checksum(cmd_buf))
 				return ;
 			/////////////
@@ -2915,7 +2920,7 @@ void Temperature::get_from_mcu()
 			  SERIAL_ECHO(k);
 			  
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)			
-			  if((temp_hotend[0].celsius>130||temp_hotend[1].celsius>130)&&(IS_SD_PRINTING() || print_job_timer.isRunning()))
+			  if((temp_hotend[0].celsius>130||temp_hotend[1].celsius>130)&&(print_job_timer.isPaused()||IS_SD_PAUSED() ||IS_SD_PRINTING() || print_job_timer.isRunning()))
 			  {
 				   runout_pin[0]=((k>>1)&0x01);// C(DEBUG_SCL PA14)
 				   runout_pin[1]=(k&0x01);// D(DEBUG_SDA PA13 )

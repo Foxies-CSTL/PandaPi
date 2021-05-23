@@ -1079,6 +1079,8 @@ void setup() {
   printf("pi_num===%d\n",pi_n);
    SERIAL_ECHOPGM("Pi version:");
    SERIAL_ECHO(pi_n);
+   thermalManager.set_fan_speed(2, 180);
+   /////////////
 
   #if HAS_SERVOS
     SETUP_RUN(servo_init());
@@ -1255,6 +1257,10 @@ void setup() {
     if (!card.isMounted()) SETUP_RUN(card.mount()); // Mount SD to load graphics and fonts
     SETUP_RUN(tft_lvgl_init());
   #endif
+
+
+ 
+
 
   marlin_state = MF_RUNNING;
 
